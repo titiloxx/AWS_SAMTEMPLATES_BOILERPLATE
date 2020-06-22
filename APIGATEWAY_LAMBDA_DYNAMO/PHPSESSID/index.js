@@ -5,14 +5,13 @@ var dynamodb = new aws.DynamoDB();
 const put=(params)=> {
     return new Promise(function(resolve, reject) {
        dynamodb.putItem(params, function(err, data) {
-      if (err) console.log(err, err.stack); // an error occurred
-      else     console.log(data);           // successful response
+      if (err) resolve(err); // an error occurred
+      else     resolve(data);           // successful response
     });
     });
 }
 
 exports.handler=async (event)=>{
-    console.log(JSON.stringify(event))
     const PHPSESSID=event.queryStringParameters.value
      var params = {
       Item: {
@@ -27,5 +26,7 @@ exports.handler=async (event)=>{
       TableName: "Chess"
      };
     let response=await put(params)
-    console.log(response)
+    
+    //CORS SAFE
+    return {headers: {"Access-Control-Allow-Origin": "*"}, "statusCode" : 200, "body" : JSON.stringify((response))}
 }

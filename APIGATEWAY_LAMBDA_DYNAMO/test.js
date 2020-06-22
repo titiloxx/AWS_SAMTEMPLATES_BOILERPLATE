@@ -16,9 +16,9 @@ const PHPSESSID= async()=>{
     profilePath: '~/.aws/credentials',
     profileName: 'default',
     environment,
-    timeoutMs: 30000
+    timeoutMs: 4000
 });
-listaTest=[...listaTest,(response)?"PASO TEST 1":`NO PASO TEST 1`]
+listaTest=[...listaTest,(JSON.stringify(response.body).CapacityUnits!=0)?"PASO TEST 1":`NO PASO TEST 1`]
 }
 
 PHPSESSID();
