@@ -9,6 +9,6 @@
   "author": "titiloxx",
   "license": "MIT",
   "dependencies": {
-    "moment-timezone": "^0.5.31"
+    "moment-timezone": "^0.5.35"
   }
 }
